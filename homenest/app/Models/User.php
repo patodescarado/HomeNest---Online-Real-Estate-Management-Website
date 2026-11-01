@@ -24,6 +24,11 @@ class User extends Authenticatable
      */
     protected function casts(): array
     {
+        protected $fillable = ['email', 'password'];       // không đưa role vào để tránh bị tự nâng quyền
+        public function profile()   { return $this->hasOne(UserProfile::class); }
+        public function properties(){ return $this->hasMany(Property::class, 'owner_id'); }
+        public function favorites() { return $this->belongsToMany(Property::class, 'favorites'); }
+        public function isAdmin(): bool { return $this->role === 'admin'; }
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
