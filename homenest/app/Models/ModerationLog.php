@@ -6,5 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class ModerationLog extends Model
 {
-    //
+    public function properties() {return $this-> belongsTo(Property::class);}
+    public function users() {return $this -> belongsTo (User::class, 'admin_id');}
 }

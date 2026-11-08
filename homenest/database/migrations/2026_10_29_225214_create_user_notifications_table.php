@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('notification_id');
             $table->foreignid('user_id')->constrained()->cascadeondelete();
             $table->text('content');
-            $table->boolean('is_read')->default('false');
+            $table->boolean('is_read')->default(false);
             $table->timestamps();
         });
     }

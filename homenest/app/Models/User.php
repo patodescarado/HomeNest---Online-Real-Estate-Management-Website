@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-#[Fillable(['name', 'email', 'password'])]
+#[Fillable(['email', 'password'])]
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {
@@ -22,16 +22,18 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
-    protected function casts(): array
-    {
-        protected $fillable = ['email', 'password'];       // không đưa role vào để tránh bị tự nâng quyền
+   
+        
+        protected function casts(): array
+        {
+            return [
+                'email_verified_at' => 'datetime',
+                'password' => 'hashed',
+            ];
+        }      // không đưa role vào để tránh bị tự nâng quyền
         public function profile()   { return $this->hasOne(UserProfile::class); }
         public function properties(){ return $this->hasMany(Property::class, 'owner_id'); }
         public function favorites() { return $this->belongsToMany(Property::class, 'favorites'); }
         public function isAdmin(): bool { return $this->role === 'admin'; }
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
-    }
+    
 }

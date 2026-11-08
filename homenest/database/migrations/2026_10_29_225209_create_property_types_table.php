@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('slug',100) ->unique();
             $table ->boolean('for_sale') ->default(true);
             $table ->boolean('for_rent') ->default(true);
-            $table ->smallinterger('sort_order') -> default(0);
+            $table ->smallInteger('sort_order') -> default(0);
         });
     }
 

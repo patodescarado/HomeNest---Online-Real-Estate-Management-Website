@@ -198,18 +198,127 @@ DELIMITER ;
 
 -- PHẦN 3: DỮ LIỆU MẪU
 
-INSERT INTO provinces(name) VALUES ('Hà Nội'), ('TP. Hồ Chí Minh'), ('Đà Nẵng');
+INSERT INTO provinces(name) VALUES ('Hà Nội'), ('TP. Hồ Chí Minh'), ('Đà Nẵng'), ('Hải Phòng'), ('Quảng Ninh'), ('Hải Dương');
 
 INSERT INTO districts(province_id, name) VALUES
-    (1, 'Cầu Giấy'), (1, 'Đống Đa'), (1, 'Hoàng Mai'),
-    (2, 'Thủ Đức'),  (2, 'Quận 7'),
-    (3, 'Hải Châu'), (3, 'Hòa Vang');
+
+-- 1. HÀ NỘI (30 đơn vị)
+(1, 'Ba Đình'),
+(1, 'Bắc Từ Liêm'),
+(1, 'Cầu Giấy'),
+(1, 'Đống Đa'),
+(1, 'Hà Đông'),
+(1, 'Hai Bà Trưng'),
+(1, 'Hoàn Kiếm'),
+(1, 'Hoàng Mai'),
+(1, 'Long Biên'),
+(1, 'Nam Từ Liêm'),
+(1, 'Tây Hồ'),
+(1, 'Thanh Xuân'),
+(1, 'Ba Vì'),
+(1, 'Chương Mỹ'),
+(1, 'Đan Phượng'),
+(1, 'Đông Anh'),
+(1, 'Gia Lâm'),
+(1, 'Hoài Đức'),
+(1, 'Mê Linh'),
+(1, 'Mỹ Đức'),
+(1, 'Phú Xuyên'),
+(1, 'Phúc Thọ'),
+(1, 'Quốc Oai'),
+(1, 'Sóc Sơn'),
+(1, 'Thạch Thất'),
+(1, 'Thanh Oai'),
+(1, 'Thanh Trì'),
+(1, 'Thường Tín'),
+(1, 'Ứng Hòa'),
+(1, 'Sơn Tây'),
+
+-- 2. TP. HỒ CHÍ MINH (22 đơn vị)
+(2, 'Quận 1'),
+(2, 'Quận 3'),
+(2, 'Quận 4'),
+(2, 'Quận 5'),
+(2, 'Quận 6'),
+(2, 'Quận 7'),
+(2, 'Quận 8'),
+(2, 'Quận 10'),
+(2, 'Quận 11'),
+(2, 'Quận 12'),
+(2, 'Bình Tân'),
+(2, 'Bình Thạnh'),
+(2, 'Gò Vấp'),
+(2, 'Phú Nhuận'),
+(2, 'Tân Bình'),
+(2, 'Tân Phú'),
+(2, 'Thành phố Thủ Đức'),
+(2, 'Bình Chánh'),
+(2, 'Cần Giờ'),
+(2, 'Củ Chi'),
+(2, 'Hóc Môn'),
+(2, 'Nhà Bè'),
+
+-- 3. ĐÀ NẴNG (8 đơn vị)
+(3, 'Hải Châu'),
+(3, 'Thanh Khê'),
+(3, 'Sơn Trà'),
+(3, 'Ngũ Hành Sơn'),
+(3, 'Liên Chiểu'),
+(3, 'Cẩm Lệ'),
+(3, 'Hòa Vang'),
+(3, 'Hoàng Sa'),
+
+-- 4. HẢI PHÒNG (15 đơn vị)
+(4, 'Hồng Bàng'),
+(4, 'Ngô Quyền'),
+(4, 'Lê Chân'),
+(4, 'Kiến An'),
+(4, 'Hải An'),
+(4, 'Đồ Sơn'),
+(4, 'Dương Kinh'),
+(4, 'An Dương'),
+(4, 'An Lão'),
+(4, 'Bạch Long Vĩ'),
+(4, 'Cát Hải'),
+(4, 'Kiến Thụy'),
+(4, 'Tiên Lãng'),
+(4, 'Thủy Nguyên'),
+(4, 'Vĩnh Bảo'),
+
+-- 5. QUẢNG NINH (13 đơn vị)
+(5, 'Hạ Long'),
+(5, 'Cẩm Phả'),
+(5, 'Móng Cái'),
+(5, 'Uông Bí'),
+(5, 'Đông Triều'),
+(5, 'Quảng Yên'),
+(5, 'Ba Chẽ'),
+(5, 'Bình Liêu'),
+(5, 'Cô Tô'),
+(5, 'Đầm Hà'),
+(5, 'Hải Hà'),
+(5, 'Tiên Yên'),
+(5, 'Vân Đồn'),
+
+-- 6. HẢI DƯƠNG (12 đơn vị)
+(6, 'Hải Dương'),
+(6, 'Chí Linh'),
+(6, 'Kinh Môn'),
+(6, 'Bình Giang'),
+(6, 'Cẩm Giàng'),
+(6, 'Gia Lộc'),
+(6, 'Kim Thành'),
+(6, 'Nam Sách'),
+(6, 'Ninh Giang'),
+(6, 'Thanh Hà'),
+(6, 'Thanh Miện'),
+(6, 'Tứ Kỳ');
 
 INSERT INTO property_types(name, slug, for_sale, for_rent, sort_order) VALUES
     ('Căn hộ chung cư',     'can-ho-chung-cu', TRUE,  TRUE,  1),   -- id 1
     ('Nhà riêng',           'nha-rieng',       TRUE,  TRUE,  2),   -- id 2
     ('Nhà mặt phố',         'nha-mat-pho',     TRUE,  TRUE,  3),   -- id 3
-    ('Biệt thự, liền kề',   'biet-thu',        TRUE,  TRUE,  4),   -- id 4
+    ('Biệt thự',   'biet-thu',        TRUE,  TRUE,  4),   -- id 4
     ('Đất',                 'dat',             TRUE,  FALSE, 5),   -- id 5 (chỉ bán)
     ('Phòng trọ',           'phong-tro',       FALSE, TRUE,  6),   -- id 6 (chỉ thuê)
     ('Văn phòng',           'van-phong',       FALSE, TRUE,  7),   -- id 7 (chỉ thuê)
@@ -229,21 +338,57 @@ INSERT INTO user_profiles(user_id, full_name, phone, bio) VALUES
 INSERT INTO properties
     (owner_id, type_id, district_id, title, description, listing_kind, price, area,
      bedrooms, bathrooms, address, latitude, longitude, status, expires_at) VALUES
-    (2, 1, 1, 'Căn hộ 2 phòng ngủ Cầu Giấy', 'Căn hộ tầng 12, đủ nội thất.',
-     'sale', 3200000000, 68, 2, 2, '12 Trần Thái Tông', 21.0301, 105.7900,
-     'approved', NOW() + INTERVAL 25 DAY),
-    (2, 3, 4, 'Nhà phố 3 tầng Thủ Đức', 'Nhà mới xây, gần trường học.',
-     'rent', 18000000, 90, 4, 3, '45 Võ Văn Ngân', 10.8500, 106.7700,
-     'approved', NOW() + INTERVAL 10 DAY),
-    (3, 5, 7, 'Đất nền mặt đường Hòa Vang', 'Đất thổ cư, sổ đỏ riêng.',
-     'sale', 2500000000, 120, 0, 0, 'QL14B, Hòa Vang', 15.9900, 108.0800,
-     'pending', NULL),
-    (3, 6, 2, 'Phòng trọ có gác Đống Đa', 'Gần ga tàu điện.',
-     'rent', 3500000, 25, 1, 1, '8 Tây Sơn', 21.0110, 105.8200,
-     'rejected', NULL),
-    (2, 1, 5, 'Căn hộ Quận 7 hết hạn', 'Tin đã hết hạn hiển thị.',
-     'rent', 12000000, 55, 1, 1, '100 Nguyễn Thị Thập', 10.7300, 106.7200,
-     'expired', NOW() - INTERVAL 3 DAY);
+(2, 1, 3, 'Căn hộ 2 phòng ngủ tại Cầu Giấy',
+ 'Căn hộ tầng 12, đầy đủ nội thất, gần các trường đại học và trung tâm thương mại.',
+ 'sale', 3200000000, 68, 2, 2, '12 Trần Thái Tông, Cầu Giấy',
+ 21.0301, 105.7900, 'approved', NOW() + INTERVAL 25 DAY),
+
+(3, 6, 4, 'Phòng trọ có gác tại Đống Đa',
+ 'Phòng trọ sạch sẽ, có gác xép, gần ga tàu điện và các trường đại học.',
+ 'rent', 3500000, 25, 1, 1, '8 Tây Sơn, Đống Đa',
+ 21.0110, 105.8200, 'approved', NOW() + INTERVAL 20 DAY),
+
+(2, 1, 37, 'Căn hộ cao cấp tại Quận 7',
+ 'Căn hộ hiện đại, đầy đủ tiện nghi, gần trung tâm thương mại Crescent Mall.',
+ 'rent', 12000000, 55, 1, 1, '100 Nguyễn Thị Thập, Quận 7',
+ 10.7300, 106.7200, 'approved', NOW() + INTERVAL 30 DAY),
+
+(3, 2, 48, 'Nhà riêng 3 tầng tại Thủ Đức',
+ 'Nhà mới xây, thiết kế hiện đại, gần trường học và khu dân cư đông đúc.',
+ 'sale', 4500000000, 90, 4, 3, '45 Võ Văn Ngân, Thành phố Thủ Đức',
+ 10.8500, 106.7700, 'pending', NULL),
+
+(2, 3, 52, 'Nhà mặt phố trung tâm Hải Châu',
+ 'Nhà mặt tiền đường lớn, vị trí kinh doanh thuận lợi, gần cầu Rồng.',
+ 'sale', 6800000000, 100, 3, 2, '120 Bạch Đằng, Hải Châu',
+ 16.0678, 108.2230, 'approved', NOW() + INTERVAL 25 DAY),
+
+(3, 5, 58, 'Đất nền thổ cư tại Hòa Vang',
+ 'Đất thổ cư, sổ đỏ riêng, đường rộng, thích hợp xây dựng nhà ở.',
+ 'sale', 2500000000, 120, 0, 0, 'QL14B, Hòa Vang',
+ 15.9900, 108.0800, 'approved', NOW() + INTERVAL 30 DAY),
+
+(2, 2, 61, 'Nhà riêng tại quận Ngô Quyền',
+ 'Nhà 3 tầng, thiết kế hợp lý, khu dân cư an ninh, thuận tiện di chuyển.',
+ 'sale', 2800000000, 75, 3, 2, '25 Lạch Tray, Ngô Quyền',
+ 20.8449, 106.6881, 'approved', NOW() + INTERVAL 20 DAY),
+
+(3, 7, 73, 'Văn phòng cho thuê tại Thủy Nguyên',
+ 'Không gian văn phòng rộng rãi, có điều hòa, thang máy và chỗ để xe.',
+ 'rent', 15000000, 100, 0, 1, 'Khu đô thị Bắc Sông Cấm, Thủy Nguyên',
+ 20.9000, 106.6800, 'pending', NULL),
+
+
+(2, 4, 76, 'Biệt thự nghỉ dưỡng tại Hạ Long',
+ 'Biệt thự thiết kế sang trọng, không gian thoáng đãng, gần khu du lịch.',
+ 'sale', 12500000000, 250, 4, 4, 'Bãi Cháy, Hạ Long',
+ 20.9530, 107.0500, 'approved', NOW() + INTERVAL 30 DAY),
+
+
+(3, 8, 89, 'Mặt bằng kinh doanh tại Hải Dương',
+ 'Mặt bằng tầng trệt, mặt tiền rộng, phù hợp kinh doanh cửa hàng và showroom.',
+ 'rent', 10000000, 80, 0, 1, 'Đại lộ Hồ Chí Minh, Hải Dương',
+ 20.9373, 106.3146, 'rejected', NULL);
 
 INSERT INTO property_images(property_id, image_path, is_cover, sort_order) VALUES
     (1, 'properties/1/a.jpg', TRUE,  0), (1, 'properties/1/b.jpg', FALSE, 1),

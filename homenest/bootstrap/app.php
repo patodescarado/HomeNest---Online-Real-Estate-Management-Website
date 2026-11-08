@@ -10,10 +10,17 @@ return Application::configure(basePath: dirname(__DIR__))
         web: __DIR__.'/../routes/web.php',
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
-    )
-    ->withMiddleware(function (Middleware $middleware): void {
-        //
+        then: function () {
+            Route::middleware(['web', 'auth', 'admin'])
+                ->prefix('admin')->name('admin.')
+                ->group(base_path('routes/admin.php'));
+        },)
+
+    ->withMiddleware(function (Middleware $middleware) {
+    $middleware->alias(['admin' => \App\Http\Middleware\IsAdmin::class]);
+    $middleware->web(append: [\App\Http\Middleware\EnsureNotLocked::class]);
     })
+    
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(
             fn (Request $request) => $request->is('api/*') || $request->expectsJson(),

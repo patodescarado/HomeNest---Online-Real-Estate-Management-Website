@@ -13,7 +13,12 @@ return new class extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id('report_id');
-            $table->foreignid('property_id')->constrained()->cascadeondelete();
+            
+            $table->foreignid('property_id');
+            $table->foreign('property_id')
+            ->references('property_id')
+            ->on('properties')
+            ->cascadeondelete();
             $table->foreignid('reporter_id')->constrained('users')->cascadeondelete();
             $table->text('reason');
             $table->string('status',10)->default('open');

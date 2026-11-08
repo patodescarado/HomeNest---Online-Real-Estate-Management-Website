@@ -12,12 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('districts', function (Blueprint $table) {
-            $table->id('district_id');
-            $table->foreignid('province_id')->constrained('provinces')->restrictedondelete();
-            $table->string('name',100);
-            $table->unique (['province_id','name']);
-            
-        });
+        $table->increments('district_id');
+        $table->unsignedInteger('province_id');
+        $table->string('name', 100);
+        $table->unique(['province_id', 'name']);
+        $table->foreign('province_id')
+            ->references('province_id')
+            ->on('provinces')
+            ->restrictondelete(); });
     }
 
     /**

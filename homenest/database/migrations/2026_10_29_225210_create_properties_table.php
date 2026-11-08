@@ -14,25 +14,29 @@ return new class extends Migration
         Schema::create('properties', function (Blueprint $table) {
             $table->id('property_id');
             $table->foreignid('owner_id')->constrained('users')->cascadeondelete();
-            $table->foreignid('type_id')->constrained('property_types')->restrictedondelete();
+            $table->foreignid('type_id');
+            $table->foreign('type_id')
+            ->references('type_id')
+            ->on('property_types')
+            ->restrictedondelete();
             $table->foreignid('district_id');
             $table->string('title',255);
-            $table->text('description') ->nullable;
+            $table->text('description') ->nullable();
             $table->string('listing_kind',4);
             $table->decimal('price',15,0);
             $table->decimal('area',10,2);
-            $table->smallint('bedrooms')-> default(0);
-            $table->smallint('bathrooms') -> default(0);
+            $table->smallinteger('bedrooms')-> default(0);
+            $table->smallinteger('bathrooms') -> default(0);
             $table->string('address',255);
             $table->decimal('latitude',9,6);
             $table->decimal('longitude',9,6);
             $table->string('status',10)->default('pending');
-            $table->unsignedinterger('view_count')->default(0);
-            $table->timestamps('expired_at')->nullable
+            $table->unsignedinteger('view_count')->default(0);
+            $table->timestamp('expires_at')->nullable();
             $table->timestamps();
-            $table->index(['expired_at', 'status']);
+            $table->index(['expires_at', 'status']);
             $table->index(['listing_kind','price']);
-        });
+           });
     }
 
     /**

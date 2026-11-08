@@ -13,10 +13,14 @@ return new class extends Migration
     {
         Schema::create('moderation_logs', function (Blueprint $table) {
             $table->id('log_id');
-            $table->foreignid('property_id')->constrained()->cascadeondelete();
-            $table->foreignid('admin_id')->constrained()->cascadeondelete();
+            $table->foreignid('property_id');
+            $table->foreign('property_id')
+            ->references('property_id')
+            ->on('properties')
+            ->cascadeondelete();
+            $table->foreignid('admin_id')->constrained('users')->restrictondelete();
             $table->string('action',10);
-            $table->text('reason') ->nullable;
+            $table->text('reason') ->nullable();
             $table->timestamps();
         });
     }

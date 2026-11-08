@@ -13,12 +13,16 @@ return new class extends Migration
     {
         Schema::create('property_images', function (Blueprint $table) {
             $table->id('image_id');
-            $table->foreignkey('property_id')->constrained()->cascadeondelete();
+            $table->foreignid('property_id');
+            $table->foreign('property_id')
+            ->references('property_id')
+            ->on('properties')
+            ->cascadeondelete();
             $table->string('image_path',255);
-            $table->boolean('is_cover')-> default('false');
-            $table->smallinterger('sort_order')->default(0);
-            $table->biginterger('cover_key');
-            $table->timestamp()
+            $table->boolean('is_cover')-> default(false);
+            $table->smallinteger('sort_order')->default(0);
+            $table->biginteger('cover_key');
+            $table->timestamps();
         });
     }
 

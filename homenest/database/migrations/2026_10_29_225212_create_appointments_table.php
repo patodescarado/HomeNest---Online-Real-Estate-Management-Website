@@ -13,12 +13,16 @@ return new class extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->id('appointments_id');
-            $table->foreignid('property_id')->constrained()->cascadeondelete();
-            $table->foreignid('used_id')->constrained()->cascadeondelete();
+            $table->foreignid('property_id');
+            $table->foreign('property_id')
+            ->references('property_id')
+            ->on('properties')
+            ->cascadeondelete();
+            $table->foreignid('user_id')->constrained()->cascadeondelete();
             $table->datetime('scheduled_at');
             $table->text('note');
             $table->string('status',10)->default('pending');
-            $table->timestamp();
+            $table->timestamps();
         });
     }
 
