@@ -22,6 +22,6 @@ class EnsureNotLocked
             $request->session()->regenerateToken();
             return redirect()->route('login')->withErrors(['email' => 'Tài khoản của bạn đã bị khóa.']);
         }
-        return $next($request)
+        return $next($request);
     }
 }

@@ -1,3 +1,229 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* =====================================
+   HOMENEST DESIGN SYSTEM
+===================================== */
+
+:root {
+    --primary: #0f8078;
+    --primary-hover: #096b64;
+    --navy: #172440;
+    --background: #f5f7f9;
+    --border: #dce4ec;
+    --text-muted: #64748b;
+}
+
+.homenest-site,
+.admin-page {
+    font-family: "Figtree", sans-serif;
+    color: var(--navy);
+    background: var(--background);
+    min-height: 100vh;
+}
+
+/* =====================================
+   WEBSITE NAVBAR
+===================================== */
+
+.homenest-navbar {
+    background: #fff;
+    min-height: 70px;
+    border-bottom: 1px solid var(--border);
+    z-index: 1030;
+}
+
+.homenest-navbar .navbar-brand {
+    color: var(--primary);
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.homenest-navbar .nav-link {
+    color: var(--navy);
+    font-weight: 500;
+    padding: 12px !important;
+}
+
+.homenest-navbar .nav-link:hover,
+.homenest-navbar .nav-link.active {
+    color: var(--primary);
+}
+
+.dropdown-menu {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+}
+
+.dropdown-item {
+    padding: 9px 12px;
+    border-radius: 6px;
+}
+
+.dropdown-item:hover {
+    color: var(--primary);
+    background: #edf7f6;
+}
+
+/* =====================================
+   BUTTONS
+===================================== */
+
+.btn-primary-custom {
+    background: var(--primary);
+    border: 1px solid var(--primary);
+    color: white !important;
+    border-radius: 9px;
+    padding: 10px 20px;
+    font-weight: 600;
+}
+
+.btn-primary-custom:hover {
+    background: var(--primary-hover);
+    border-color: var(--primary-hover);
+}
+
+.btn-login {
+    background: white;
+    border: 1px solid var(--border);
+    color: var(--navy);
+    border-radius: 9px;
+    padding: 10px 20px;
+}
+
+.btn-login:hover {
+    background: var(--background);
+}
+
+/* =====================================
+   SITE CONTENT
+===================================== */
+
+.site-main {
+    min-height: calc(100vh - 145px);
+}
+
+.homenest-footer {
+    background: white;
+    border-top: 1px solid var(--border);
+    padding: 25px 0;
+    margin-top: auto;
+}
+
+.footer-brand {
+    color: var(--primary);
+    font-size: 18px;
+}
+
+/* =====================================
+   FLASH
+===================================== */
+
+.alert {
+    border-radius: 10px;
+}
+
+/* =====================================
+   ADMIN LAYOUT
+===================================== */
+
+.admin-wrapper {
+    min-height: 100vh;
+}
+
+.admin-sidebar {
+    width: 260px;
+    min-width: 260px;
+    background: var(--navy);
+    color: white;
+    min-height: 100vh;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+}
+
+.admin-logo {
+    display: block;
+    color: white;
+    font-size: 25px;
+    font-weight: 700;
+    padding: 12px 8px;
+}
+
+.admin-logo:hover {
+    color: white;
+}
+
+.admin-logo span {
+    display: block;
+    color: #8ba2bc;
+    font-size: 11px;
+    letter-spacing: 3px;
+    margin-top: 3px;
+}
+
+.admin-menu-label {
+    color: #91a1b7;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    padding-left: 12px;
+}
+
+.admin-sidebar .nav-link,
+.admin-mobile-sidebar .nav-link {
+    color: #dce5f0;
+    border-radius: 9px;
+    padding: 12px 14px;
+    font-weight: 500;
+}
+
+.admin-sidebar .nav-link:hover,
+.admin-mobile-sidebar .nav-link:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.admin-sidebar .nav-link.active,
+.admin-mobile-sidebar .nav-link.active {
+    background: var(--primary);
+    color: white;
+}
+
+.admin-back-link {
+    color: #b6c4d5 !important;
+}
+
+.admin-main {
+    min-width: 0;
+}
+
+.admin-topbar {
+    min-height: 70px;
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+}
+
+.admin-content {
+    min-height: calc(100vh - 70px);
+}
+
+.admin-mobile-sidebar {
+    background: var(--navy);
+    color: white;
+    width: 280px !important;
+}
+
+/* =====================================
+   RESPONSIVE
+===================================== */
+
+@media (max-width: 991px) {
+    .homenest-navbar .navbar-collapse {
+        padding: 15px 0;
+    }
+
+    .admin-content {
+        padding: 16px !important;
+    }
+}

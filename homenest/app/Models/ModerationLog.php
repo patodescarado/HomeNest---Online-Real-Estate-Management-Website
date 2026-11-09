@@ -5,7 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 class ModerationLog extends Model
-{
-    public function properties() {return $this-> belongsTo(Property::class);}
-    public function users() {return $this -> belongsTo (User::class, 'admin_id');}
+{   protected $primaryKey = 'log_id';
+    public $timestamps = false;
+    public function properties() {return $this-> belongsTo(Property::class, 'property_id', 'property_id');}
+    public function users() {return $this -> belongsTo (User::class);}
 }

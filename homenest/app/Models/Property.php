@@ -26,13 +26,19 @@ class Property extends Model
     }
 
     public function owner() {return $this -> belongsTo (User::class, 'owner_id'); }
-    public function types() {return $this -> belongsTo (Property_type::class, 'type_id');}
-    public function images() {return $this -> hasMany (Property_image::class);}
-    public function districts() {return $this-> belongsTo(District::class);}
-    public function moderationlogs() {return $this -> hasMany (Moderations_log::class);}
+    public function type() {return $this -> belongsTo (PropertyType::class, 'type_id');}
+    public function image() {return $this -> hasMany (PropertyImage::class, 'image_id');}
+    public function district() {return $this-> belongsTo(District::class, 'district_id');}
+    public function moderationlogs() {return $this -> hasMany (ModerationsLog::class);}
     public function favorites() {return $this -> belongsToMany (Favorite::class, 'favourites');}
+    public function coverImage() { return $this->hasOne(PropertyImage::class)->where('is_cover', true); }
 
-    public function approved($query) 
+    public function isPublic(): bool
+    {
+        return $this->status === self::STATUS_APPROVED && $this->expires_at?->isFuture();
+    }
+
+    public function scopeApproved($query) 
     {return $query -> where ('status', self::status_approved)
     -> where ('expires_at', '>', now());
     }

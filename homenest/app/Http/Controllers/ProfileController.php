@@ -73,4 +73,13 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
+        // HomeController
+    public function index()
+    {
+        return view('home', [
+            'latest' => Property::approved()->with(['district.province', 'coverImage'])->latest()->take(8)->get(),
+        ]);
+    }
+
 }
