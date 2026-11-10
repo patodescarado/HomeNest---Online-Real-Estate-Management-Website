@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
     public function run(): void
     {
     $admin = User::forceCreate(['email' => 'admin@homenest.vn', 'password' => 'password', 'role' => 'admin']);
-    $admin->profile()->create(['full_name' => 'Quản trị viên', 'phone'=>'0900000000', 'avatar'=> 'admin.jpg', 'bio'=>'I am admin']);
+    $admin->profile()->create(['full_name' => 'Quản trị viên', 'phone'=>'0900000000']);
     
     $u1 = User::forceCreate(['email' => 'user1@example.com', 'password' => 'password']);
     $u1->profile()->create(['full_name' => 'Người dùng 1', 'phone' => '0911111111']);

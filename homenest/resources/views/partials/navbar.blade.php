@@ -5,6 +5,8 @@
         'nha-rieng'       => 'Nhà riêng',
         'nha-mat-pho'     => 'Nhà mặt phố',
         'dat'             => 'Đất',
+        'biet-thu'             => 'Biệt thự',
+        'bds-khac'        => 'Bất động sản khác',
     ];
 @endphp
 
@@ -92,7 +94,7 @@
                     <li class="nav-item">
                         <a href="{{ route('register') }}"
                            class="btn btn-primary-custom">
-                            Đăng tin
+                            Đăng ký
                         </a>
                     </li>
 

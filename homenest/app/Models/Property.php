@@ -27,15 +27,15 @@ class Property extends Model
 
     public function owner() {return $this -> belongsTo (User::class, 'owner_id'); }
     public function type() {return $this -> belongsTo (PropertyType::class, 'type_id');}
-    public function image() {return $this -> hasMany (PropertyImage::class, 'image_id');}
+    public function image() {return $this -> hasMany (PropertyImage::class, 'property_id','property_id');}
     public function district() {return $this-> belongsTo(District::class, 'district_id');}
     public function moderationlogs() {return $this -> hasMany (ModerationsLog::class);}
     public function favorites() {return $this -> belongsToMany (Favorite::class, 'favourites');}
-    public function coverImage() { return $this->hasOne(PropertyImage::class)->where('is_cover', true); }
+    public function coverImage() { return $this->hasOne(PropertyImage::class, 'property_id','property_id')->where('is_cover', true); }
 
     public function isPublic(): bool
     {
-        return $this->status === self::STATUS_APPROVED && $this->expires_at?->isFuture();
+        return $this->status === self::status_approved && $this->expires_at?->isFuture();
     }
 
     public function scopeApproved($query) 

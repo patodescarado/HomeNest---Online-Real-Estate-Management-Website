@@ -7,9 +7,25 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
-
+use App\Models\Property;
 class PropertyController extends Controller
-{
+{   
+    public function show(Property $property)
+    {
+        $user = auth()->user();
+        $canSee = $property->isPublic()
+            || ($user && ($user->id === $property->owner_id || $user->isAdmin()));
+        abort_unless($canSee, 404);
+
+        if ($property->isPublic() && !session()->has("viewed.{$property->id}")) {
+            $property->timestamps = false;        // lượt xem không làm đổi updated_at
+            $property->increment('view_count');
+            session(["viewed.{$property->id}" => true]);
+        }
+
+        $property->load(['coverImage', 'district.province', 'type', 'owner.profile']);
+        return view('properties.show', compact('property'));
+    }
     public function index(Request $request, ?string $kind = null, ?string $slug = null)
     {
         $query = Property::approved()->with(['district.province', 'coverImage']);
