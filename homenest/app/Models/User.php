@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Property;
 
 #[Fillable(['email', 'password'])]
 #[Hidden(['password', 'remember_token'])]
@@ -33,7 +34,15 @@ class User extends Authenticatable
         }      // không đưa role vào để tránh bị tự nâng quyền
         public function profile()   { return $this->hasOne(UserProfile::class); }
         public function properties(){ return $this->hasMany(Property::class, 'owner_id'); }
-        public function favorites() { return $this->belongsToMany(Property::class, 'favorites'); }
+        
         public function isAdmin(): bool { return $this->role === 'admin'; }
+        public function favorites()
+        {
+            return $this->belongsToMany(Property::class, 'favorites','user_id','property_id')->withTimestamps();
+        }
+        public function favoriteIds(): array
+        {
+            return $this->favorites()->pluck('properties.property_id')->all();
+        }
     
 }

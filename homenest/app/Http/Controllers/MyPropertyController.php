@@ -1,12 +1,48 @@
 <?php
 
-namespace App\Http\Controllers\User;
-
+namespace App\Http\Controllers;
+    
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SearchPropertyRequest;
 use Illuminate\Http\Request;
+use App\Models\Province;
+use App\Models\District;
+use App\Models\Property;
+use App\Models\PropertyType;
+use App\Http\Requests\StorePropertyRequest;
+use App\Services\ImageUploadService;
 
 class MyPropertyController extends Controller
 {
+    public function create()
+{
+    $provinces = Province::orderBy('name')->get();
+    $districts = District::orderBy('name')->get();
+    $types = PropertyType::orderBy('name')->get();
+
+    return view('my-properties.create', [
+        'property' => null,
+        'provinces' => $provinces,
+        'districts' => $districts,
+        'types' => $types,
+    ]);
+}
+
+public function edit(Property $property)
+{
+    $provinces = Province::orderBy('name')->get();
+    $districts = District::orderBy('name')->get();
+    $types = PropertyType::orderBy('name')->get();
+
+    return view('my-properties.edit', [
+        'property' => $property,
+        'provinces' => $provinces,
+        'districts' => $districts,
+        'types' => $types,
+    ]);
+}
+
     public function index()
 {
     $properties = auth()->user()->properties()

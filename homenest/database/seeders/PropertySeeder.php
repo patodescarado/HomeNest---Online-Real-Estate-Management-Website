@@ -28,8 +28,7 @@ $p = Property::create([
     'bedrooms' => 2,
     'bathrooms' => 2,
     'address' => '12 Trần Thái Tông, Cầu Giấy',
-    'latitude' => 21.0301,
-    'longitude' => 105.7900,
+
 ]);
 
 $p->forceFill([
@@ -51,8 +50,7 @@ $p = Property::create([
     'bedrooms' => 1,
     'bathrooms' => 1,
     'address' => '8 Tây Sơn, Đống Đa',
-    'latitude' => 21.0110,
-    'longitude' => 105.8200,
+
 ]);
 
 $p->forceFill([
@@ -74,8 +72,7 @@ $p = Property::create([
     'bedrooms' => 1,
     'bathrooms' => 1,
     'address' => '100 Nguyễn Thị Thập, Quận 7',
-    'latitude' => 10.7300,
-    'longitude' => 106.7200,
+
 ]);
 
 $p->forceFill([
@@ -97,8 +94,7 @@ $p = Property::create([
     'bedrooms' => 4,
     'bathrooms' => 3,
     'address' => '45 Võ Văn Ngân, Thành phố Thủ Đức',
-    'latitude' => 10.8500,
-    'longitude' => 106.7700,
+
 ]);
 
 $p->forceFill([
@@ -120,8 +116,7 @@ $p = Property::create([
     'bedrooms' => 3,
     'bathrooms' => 2,
     'address' => '120 Bạch Đằng, Hải Châu',
-    'latitude' => 16.0678,
-    'longitude' => 108.2230,
+
 ]);
 
 $p->forceFill([

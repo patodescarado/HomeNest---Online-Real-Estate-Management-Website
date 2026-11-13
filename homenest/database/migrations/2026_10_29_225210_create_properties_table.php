@@ -28,8 +28,6 @@ return new class extends Migration
             $table->smallinteger('bedrooms')-> default(0);
             $table->smallinteger('bathrooms') -> default(0);
             $table->string('address',255);
-            $table->decimal('latitude',9,6);
-            $table->decimal('longitude',9,6);
             $table->string('status',10)->default('pending');
             $table->unsignedinteger('view_count')->default(0);
             $table->timestamp('expires_at')->nullable();

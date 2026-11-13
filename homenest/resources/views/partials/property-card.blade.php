@@ -4,6 +4,17 @@
         ? Storage::url($property->coverImage->image_path)
         : asset('images/no-image.svg');
 @endphp
+
+@auth
+  @php($saved = in_array($property->id, $favoriteIds ?? []))
+  <button type="button" data-url="{{ route('favorites.toggle', $property) }}"
+          class="btn btn-sm js-fav {{ $saved ? 'btn-danger' : 'btn-outline-danger' }}">
+    {{ $saved ? 'Đã lưu' : 'Lưu' }}
+  </button>
+@else
+  <a href="{{ route('login') }}" class="btn btn-sm btn-outline-danger">Lưu</a>
+@endauth
+
 <div class="col">
     <div class="card h-100 shadow-sm">
         <a href="{{ route('properties.show', $property) }}">

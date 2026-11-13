@@ -101,7 +101,7 @@
                 @else
 
                     <li class="nav-item">
-                        <a href="{{ url('/dang-tin') }}"
+                        <a href="{{ url('/tin-dang') }}"
                            class="btn btn-primary-custom">
                             <i class="bi bi-plus-lg me-1"></i>
                             Đăng tin
@@ -126,6 +126,16 @@
                                 </li>
                                 <li><hr class="dropdown-divider"></li>
                             @endif
+                                                    <li>
+                                    <a class="dropdown-item"
+                                    href="{{ route('profile.show') }}">
+                                        <i class="bi bi-person me-2"></i>
+                                        Thông tin cá nhân
+                                    </a>
+                                </li>
+
+                                <li><hr class="dropdown-divider"></li>
+
 
                             <li>
                                 <form method="POST" action="{{ route('logout') }}">

@@ -29,9 +29,17 @@
                     </form>
                 </td>
             </tr>
+
         @empty
             <tr><td colspan="5" class="text-muted">Bạn chưa đăng tin nào.</td></tr>
         @endforelse
+
+        @if($property->status === 'expired' || ($property->status === 'approved' && $property->expires_at->lte(now()->addDays(7))))
+        <form method="POST" action="{{ route('my-properties.renew', $property) }}" class="d-inline">
+            @csrf @method('PATCH')
+            <button class="btn btn-sm btn-outline-primary">Gia hạn +30 ngày</button>
+        </form>
+        @endif
         </tbody>
     </table>
 </div>

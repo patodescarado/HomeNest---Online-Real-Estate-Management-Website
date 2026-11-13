@@ -7,11 +7,13 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\Province;
+use App\Models\District;
 
 class LocationController extends Controller
 {
     public function districts(Province $province)
     {
-        return $province->districts()->orderBy('name')->get(['id', 'name']);
+        return $province->districts()->orderBy('name')->get(['district_id', 'name']);
     }
 }

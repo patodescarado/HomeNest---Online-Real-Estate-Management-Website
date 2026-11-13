@@ -10,6 +10,12 @@ use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
+    public function show()
+    {
+        return view('profile.show', [
+            'user' => auth()->user()
+        ]);
+    }
     /**
      * Display the user's profile form.
      */

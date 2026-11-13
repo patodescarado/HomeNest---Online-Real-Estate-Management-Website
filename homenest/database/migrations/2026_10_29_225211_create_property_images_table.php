@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('image_path',255);
             $table->boolean('is_cover')-> default(false);
             $table->smallinteger('sort_order')->default(0);
-            $table->biginteger('cover_key');
+            $table->biginteger('cover_key')->nullable();
             $table->timestamps();
         });
     }

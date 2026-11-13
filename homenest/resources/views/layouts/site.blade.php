@@ -7,6 +7,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title', 'HomeNest - Bất động sản')</title>
+    
+    <link rel="stylesheet" href="{{ asset('css/homenest.css') }}">
 
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600,700&display=swap"
@@ -19,6 +21,8 @@
     {{-- Bootstrap Icons --}}
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+          
 
     {{-- Custom CSS --}}
     @vite(['resources/css/app.css', 'resources/js/app.js'])

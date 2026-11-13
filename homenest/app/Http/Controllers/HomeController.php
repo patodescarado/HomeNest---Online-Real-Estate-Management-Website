@@ -11,6 +11,7 @@ use App\Models\Property;
 use App\Models\PropertyType;
 use App\Models\PropertyImage;
 use App\Models\Province;
+
 class HomeController extends Controller
 {
     public function index()
